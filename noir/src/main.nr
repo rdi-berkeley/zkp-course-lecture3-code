@@ -21,14 +21,19 @@ fn rows_are_valid(solution: Solution) -> bool {
 }
 
 fn check_distinctness(a: [u4; SIZE]) {
-  for i in 0..SIZE {
-      // Check that each value is in the correct range.
-      constrain (a[i] > 0 & (a[i] < 10));
-      // Check that all previous elements are different from a[i]
-      for k in 0..i {
-          constrain a[k] != a[i];
-      };
-  };
+    for i in 0..SIZE {
+        // Check that each value is in the correct range.
+        constrain (a[i] > 0 & (a[i] < 10));
+        // Check that all previous elements are different from a[i]
+        for j in 0..SIZE {
+            if (j as u4) < (i as u4) {
+                constrain a[j] != a[i];
+            }
+        }
+        // for k in 0..i {
+        //     constrain a[k] != a[i];
+        // };
+    };
 }
 
 
