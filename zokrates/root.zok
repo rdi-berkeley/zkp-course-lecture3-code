@@ -1,0 +1,40 @@
+struct Puzzle<N> {
+    u8[N][N] elems;
+}
+struct Solution<N> {
+    u8[N][N] elems;
+}
+
+def check_rows<N>(Solution<N> sol) -> bool {
+    // for each row
+    for u32 i in 0..N {
+        // for each column
+        for u32 j in 0..N {
+            // Check that the (i, j)-th element is not equal to any of the
+            // the elements preceding it in the same row.
+            for u32 k in 0..j {
+                assert(sol.elems[i][j] != sol.elems[i][k]);
+            }
+        }
+    }
+    return true;
+}
+
+def check_puzzle_matches_solution<N>(Solution<N> sol, Puzzle<N> puzzle) -> bool {
+    for u32 i in 0..N {
+        for u32 j in 0..N {
+            assert((sol.elems[i][j] > 0) && (sol.elems[i][j] < 10));
+            assert(\
+                (puzzle.elems[i][j] == 0) ||\
+                (puzzle.elems[i][j] == sol.elems[i][j])\
+            );
+        }
+    }
+    return true;
+}
+
+def main(public Puzzle<2> puzzle, private Solution<2> sol) {
+    log("Puzzle: {}, Solution: {}", puzzle, sol);
+    assert(check_puzzle_matches_solution(sol, puzzle));
+    assert(check_rows(sol));
+}

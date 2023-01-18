@@ -23,8 +23,6 @@ fn check_rows_are_valid(solution: Solution) {
 // and is in the range [1, 9].
 fn check_distinctness(a: [u4; SIZE]) {
     for i in 0..SIZE {
-        // Check that each value is in the correct range.
-        constrain (a[i] > 0 & (a[i] < 10));
         // Check that all previous elements are different from a[i]
         for j in 0..SIZE {
             if (j as u4) < (i as u4) {
@@ -39,9 +37,12 @@ fn check_distinctness(a: [u4; SIZE]) {
 fn check_solution_matches_puzzle(solution: Solution, puzzle: Puzzle) {
     for row in 0..SIZE {
         for col in 0..SIZE {
+            let elem = solution.elems[row * SIZE + col];
+            // Check that each solution value is in the correct range.
+            constrain (elem > 0 & (elem < 10));
             constrain (
                 (puzzle.elems[row * SIZE + col] == 0) | 
-                (puzzle.elems[row * SIZE + col] == solution.elems[row * SIZE + col])
+                (puzzle.elems[row * SIZE + col] == elem)
             );
         };
     };

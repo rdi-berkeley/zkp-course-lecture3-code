@@ -1,0 +1,60 @@
+{
+  "inputs": [
+    {
+      "name": "puzzle",
+      "public": true,
+      "type": "struct",
+      "components": {
+        "name": "Puzzle",
+        "generics": [
+          2
+        ],
+        "members": [
+          {
+            "name": "elems",
+            "type": "array",
+            "components": {
+              "size": 2,
+              "type": "array",
+              "components": {
+                "size": 2,
+                "type": "u8"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "sol",
+      "public": false,
+      "type": "struct",
+      "components": {
+        "name": "Solution",
+        "generics": [
+          2
+        ],
+        "members": [
+          {
+            "name": "elems",
+            "type": "array",
+            "components": {
+              "size": 2,
+              "type": "array",
+              "components": {
+                "size": 2,
+                "type": "u8"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "output": {
+    "type": "tuple",
+    "components": {
+      "elements": []
+    }
+  }
+}
