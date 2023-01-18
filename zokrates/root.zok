@@ -34,7 +34,6 @@ def check_puzzle_matches_solution<N>(Solution<N> sol, Puzzle<N> puzzle) -> bool 
 }
 
 def main(public Puzzle<2> puzzle, private Solution<2> sol) {
-    log("Puzzle: {}, Solution: {}", puzzle, sol);
     assert(check_puzzle_matches_solution(sol, puzzle));
     assert(check_rows(sol));
 }
