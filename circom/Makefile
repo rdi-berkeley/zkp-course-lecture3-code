@@ -21,7 +21,7 @@ $(compile_outputs): $(circom)
 	circom $< --r1cs --wasm
 
 $(ptau):
-	snarkjs powersoftau new bn128 10 tmp.ptau
+	snarkjs powersoftau new bn128 12 tmp.ptau
 	snarkjs powersoftau prepare phase2 tmp.ptau $(ptau)
 	rm tmp.ptau
 
